@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gocolly/colly"
-	"github.com/wonderstone/awei-proxy"
+	"github.com/wonderstone/AweiProxy"
 )
 
 func main() {
