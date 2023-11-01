@@ -4,39 +4,15 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gocolly/colly"
-	"github.com/wonderstone/AweiProxy"
+	"github.com/wonderstone/colly-proxy/AweiProxy"
 )
 
 func main() {
 
 	// test getTodayDate
-	month, day := getTodayDate()
-	fmt.Println(month, day)
-
-	c := colly.NewCollector()
-	//
-	// url = "https://agit.ai/12/a/raw/branch/master/2/2.16v2"
-	// //  print all data from the url
-	// c.OnResponse(func(r *colly.Response) {
-	// 	fmt.Println(string(r.Body))
-
-	// })
-
-	// c.Visit(url)
-
-	// new url1
-	url1 := "https://agit.ai/12/a/src/branch/master/4"
-
-	// get all tr from the html store its td's href in the slice
-	c.OnHTML("tr", func(e *colly.HTMLElement) {
-		href := e.ChildAttr("td a", "href")
-		fmt.Println(href)
-	})
-
-	// visit the url1
-	c.Visit(url1)
-
+	month, date := getTodayDate()
+	updated, result := AweiProxy.GetFile(AweiProxy.URL, month, date)
+	fmt.Println(updated, result)
 }
 
 // get today date
